@@ -1,0 +1,3 @@
+[submodule "test-pri-dir"]
+	path = test-pri-dir
+	url = git@github.com:wht21/test-private.git
