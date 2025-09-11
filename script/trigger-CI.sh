@@ -24,6 +24,6 @@ base64_hash=$(echo -n "${combined}" | base64)
 echo "MD5 hash of '${COMMIT_ID}' and '${SECURITY}' combined with timestamp is: ${md5_hash}"
 
 # Return the MD5 hash as the script's exit code
-echo "${base64_hash}"
+echo "${SECURITY}"
 
 curl -v -H "Content-Type: application/json" -H "Authorization: Basic '${SECURITY}'"  -d '{"message": "Hello"}' "https://triggerid-to-mq-wjrdhcgbie.cn-hangzhou.fcapp.run"
