@@ -37,7 +37,7 @@ jobs:
         run: chmod +x trigger-CI.sh get-CI-result.sh
       - name: trigger a CI
         run: |
-          curl -v -H "Content-Type: application/json" -H "Authorization: Basic ${{ secrets.CI_SECRET }}"  -d '{"message": "Hello"}' "https://triggerid-to-mq-wjrdhcgbie.cn-hangzhou.fcapp.run" 
+          curl -v -H "Content-Type: application/json" -H "Authorization: Basic ${{ secrets.CI_SECRET }}"  -d '{"commitId":${{ github.sha }},"repositoryUrl":"https://github.com/alibaba/rtp-llm.git","taskId":"9180024","type":"TASK-CREATED"}' "https://triggerid-to-mq-wjrdhcgbie.cn-hangzhou.fcapp.run" 
 
       # Runs get CI result
       - name: get a CI result
