@@ -21,7 +21,6 @@ while true; do
     echo "Current status: $status"
 
     if [[ "$status" == "DONE" || "$status" == "FAILED" || "$status" == "UNKNOWN" ]]; then
-        echo "CI running with status: $status"
         if [[ "$status" == "DONE" ]]; then
             echo "CI completed successfully"
         elif [[ "$status" == "FAILED" ]]; then
