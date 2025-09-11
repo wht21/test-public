@@ -17,8 +17,7 @@ while true; do
     response=${curl -s  -H "Content-Type: application/json" \
                         -H "Authorization: Basic ${SECURITY}" \
                         -d "{\"commitId\": \"${COMMIT_ID}\"}"
-                        "https://triggerid-to-mq-wjrdhcgbie.cn-hangzhou.fcapp.run"}
-    # response=$(curl -s -H "Authorization: Basic ${SECURITY}" "${QUERY_URL}")
+                        "https://get-tasend-back-twkvcdsbpj.cn-hangzhou.fcapp.run"}
     status=$(echo "$response" | grep -o '"status":"[^"]*"' | cut -d':' -f2 | tr -d '"')
 
     echo "Current status: $status"
