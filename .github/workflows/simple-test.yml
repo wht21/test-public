@@ -37,9 +37,7 @@ jobs:
         run: chmod +x trigger-CI.sh get-CI-result.sh
       - name: trigger a CI
         run: |
-          echo ${{ github.sha }} 
-          echo ${{ secrets.CI_SECRET }}
-          ./trigger-CI.sh ${{ github.sha }} ${{ secrets.CI_SECRET }}
+          curl -v -H "Content-Type: application/json" -H "Authorization: Basic ${{ secrets.CI_SECRET }}"  -d '{"message": "Hello"}' "https://triggerid-to-mq-wjrdhcgbie.cn-hangzhou.fcapp.run" 
 
       # Runs get CI result
       - name: get a CI result
