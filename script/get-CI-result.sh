@@ -25,8 +25,7 @@ while true; do
         if [[ "$status" == "DONE" ]]; then
             echo "CI completed successfully"
             return 0
-        fi
-        else then
+        else
             echo "CI failed or status unknown"
             return -1
         fi
