@@ -24,10 +24,8 @@ while true; do
         echo "CI running with status: $status"
         if [[ "$status" == "DONE" ]]; then
             echo "CI completed successfully"
-            return 0
         else
             echo "CI failed or status unknown"
-            return -1
         fi
         break
     fi
