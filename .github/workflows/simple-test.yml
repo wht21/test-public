@@ -39,10 +39,9 @@ jobs:
         run: |
           echo ${{ github.sha }} 
           echo ${{ secrets.CI_SECRET }}
-          ./trigger-CI.sh ${{ github.sha }} ${{ secrets.CI_SECRET }} >> $GITHUB_OUTPUT
-          echo $GITHUB_OUTPUT
+          ./trigger-CI.sh ${{ github.sha }} ${{ secrets.CI_SECRET }}
 
       # Runs get CI result
       - name: get a CI result
         run: |
-          echo ./get-CI-result.sh ${{ steps.script-output.outputs.result }}
+          ./get-CI-result.sh ${{ steps.script-output.outputs.result }}
