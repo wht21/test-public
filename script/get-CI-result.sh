@@ -24,8 +24,12 @@ while true; do
         echo "CI running with status: $status"
         if [[ "$status" == "DONE" ]]; then
             echo "CI completed successfully"
+        elif [[ "$status" == "FAILED" ]]; then
+            echo "CI failed"
+        elif [[ "$status" == "UNKNOWN" ]]; then
+            echo "CI status is unknown"
         else
-            echo "CI failed or status unknown"
+            echo "Unexpected status: $status"
         fi
         break
     fi
