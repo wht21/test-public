@@ -33,6 +33,8 @@ jobs:
         run: echo Hello, world!
 
       # Runs trigger CI
+      - name: Make the script files executable
+        run: chmod +x trigger-CI.sh get-CI-result.sh
       - name: trigger a CI
         run: |
           echo ${{ github.sha }} 
