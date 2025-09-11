@@ -14,10 +14,10 @@ QUERY_URL="https://triggerid-to-mq-wjrdhcgbie.cn-hangzhou.fcapp.run/query?commit
 while true; do
     echo "Querying CI status for commitId: ${COMMIT_ID} ..."
 
-    response=${curl -s  -H "Content-Type: application/json" \
+    response=$(curl -s  -H "Content-Type: application/json" \
                         -H "Authorization: Basic ${SECURITY}" \
                         -d "{\"commitId\": \"${COMMIT_ID}\"}"
-                        "https://get-tasend-back-twkvcdsbpj.cn-hangzhou.fcapp.run"}
+                        "https://get-tasend-back-twkvcdsbpj.cn-hangzhou.fcapp.run")
     status=$(echo "$response" | grep -o '"status":"[^"]*"' | cut -d':' -f2 | tr -d '"')
 
     echo "Current status: $status"
