@@ -21,13 +21,15 @@ while true; do
 
     echo "Current status: $status"
 
-    if [[ "$status" == "DONE" || "$status" == "FAILED" || "$status" == "UNKNOWN" ]]; then
+    if [[ "$status" == "DONE" || "$status" == "FAILED" || "$status" == "UNKNOWN" || "$status" == "CANCELED"]]; then
         if [[ "$status" == "DONE" ]]; then
             echo "CI completed successfully"
         elif [[ "$status" == "FAILED" ]]; then
             echo "CI failed"
         elif [[ "$status" == "UNKNOWN" ]]; then
             echo "CI status is unknown"
+        elif [[ "$status" == "CANCELED" ]]; then
+            echo "CI was canceled"
         else
             echo "Unexpected status: $status"
         fi
