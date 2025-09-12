@@ -17,7 +17,7 @@ while true; do
                         -H "Authorization: Basic ${SECURITY}" \
                         -d "{\"type\": \"RETRIEVE-TASK-STATUS\", \"commitId\": \"${COMMIT_ID}\"}" "https://get-tasend-back-twkvcdsbpj.cn-hangzhou.fcapp.run")
     echo "Response: $response"
-    status=$(echo "$response" | sed 's/.*"status":"\([^"]*\)".*/\1/')
+    status=$(echo "$response" | jq -r '.status' | jq -r '.status')
 
     echo "Current status: $status"
 
