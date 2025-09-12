@@ -17,7 +17,7 @@ while true; do
                         -H "Authorization: Basic ${SECURITY}" \
                         -d "{\"type\": \"RETRIEVE-TASK-STATUS\", \"commitId\": \"${COMMIT_ID}\"}" "https://get-tasend-back-twkvcdsbpj.cn-hangzhou.fcapp.run")
     echo "Response: $response"
-    status=$(echo "$response" | jq -r '.status | try(fromjson | .status) catch .')
+    status=$(echo "$response" | jq -r '.status | if test("^\\{") then fromjson.status else . end')
 
     echo "Current status: $status"
 
