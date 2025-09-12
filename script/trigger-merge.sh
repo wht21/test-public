@@ -9,8 +9,12 @@ COMMIT_ID=$1
 SECURITY=$2
 REPO_URL="https://github.com/${GITHUB_REPOSITORY}.git"
 AONE_PROJECT_ID="${AONE_PROJECT_ID}"
-SRC_BRANCH="open_merge_${COMMIT_ID}"
-DEST_BRANCH="main"
+AUTHOR_EMAIL="yanan.yn@alibaba-inc.com"
+AUTHOR_NAME="隆宇"
+MERGE_MESSAGE="foo"
+MERGE_TYPE="SQUASH"
+SOURCE_BRANCH="open_merge_${COMMIT_ID}"
+TARGET_BRANCH="main"
 
 # Get current timestamp
 timestamp=$(date +%s)
@@ -33,11 +37,15 @@ JSON_BODY=$(cat <<EOF
   \"type\": \"MERGE-TASK\",
   \"repositoryUrl\": \"${REPO_URL}\",
   \"commitId\": \"${COMMIT_ID}\",
-  \"aone\": \"{
+  \"aone\": {
     \"projectId\": \"${AONE_PROJECT_ID}\"
-  }\",
-  \"srcBranch\": \"${SRC_BRANCH}\",
-  \"destBranch\": \"${DEST_BRANCH}\"
+  },
+  \"authorEmail\": \"${AUTHOR_EMAIL}\",
+  \"authorName\": \"${AUTHOR_NAME}\",
+  \"mergeMessage\": \"${MERGE_MESSAGE}\",
+  \"mergeType\": \"${MERGE_TYPE}\",
+  \"sourceBranch\": \"${SRC_BRANCH}\",
+  \"targetBranch\": \"${DEST_BRANCH}\"
 }
 EOF
 )
