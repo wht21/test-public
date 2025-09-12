@@ -11,7 +11,7 @@ SECURITY=$2
 
 
 while true; do
-    echo "Querying CI status for commitId: ${COMMIT_ID} ..."
+    echo "Querying merge status for commitId: ${COMMIT_ID} ..."
 
     response=$(curl -s  -H "Content-Type: application/json" \
                         -H "Authorization: Basic ${SECURITY}" \
@@ -20,16 +20,8 @@ while true; do
 
     echo "Current status: $status"
 
-    if [[ "$status" == "DONE" || "$status" == "FAILED" || "$status" == "UNKNOWN" ]]; then
-        if [[ "$status" == "DONE" ]]; then
-            echo "CI completed successfully"
-        elif [[ "$status" == "FAILED" ]]; then
-            echo "CI failed"
-        elif [[ "$status" == "UNKNOWN" ]]; then
-            echo "CI status is unknown"
-        else
-            echo "Unexpected status: $status"
-        fi
+    if [ "$status" != "PENDING" ]; then
+        echo "Merge process completed with status: $status"
         break
     fi
 
