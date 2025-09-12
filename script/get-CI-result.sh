@@ -17,7 +17,7 @@ while true; do
                         -H "Authorization: Basic ${SECURITY}" \
                         -d "{\"type\": \"RETRIEVE-TASK-STATUS\", \"commitId\": \"${COMMIT_ID}\"}" "https://get-tasend-back-twkvcdsbpj.cn-hangzhou.fcapp.run")
     echo "Response: $response"
-    status=$(echo "$response" | grep -o '"status":"{[^}]*}"' | sed 's/.*"status":"{\(.*\)}".*/\1/' | grep -o 'status":"[^"]*"' | head -n1 | cut -d':' -f2 | tr -d '"')
+    status=$(echo "$response" | sed -n 's/.*"status":"{.*\"status\":\"\([A-Z]*\)\".*}".*/\1/p')
 
     echo "Current status: $status"
 
