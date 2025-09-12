@@ -1,0 +1,19 @@
+name: Trigger on PR Merge
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  trigger-on-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if PR was merged
+        run: |
+          if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
+            echo "PR was merged"
+            # 在这里添加你想要执行的命令
+          else
+            echo "PR was not merged"
+          fi
