@@ -17,11 +17,11 @@ while true; do
                         -H "Authorization: Basic ${SECURITY}" \
                         -d "{\"type\": \"RETRIEVE-TASK-STATUS\", \"commitId\": \"${COMMIT_ID}\"}" "https://get-tasend-back-twkvcdsbpj.cn-hangzhou.fcapp.run")
     echo "Response: $response"
+
     status=$(echo "$response" | jq -r '.status | if test("^\\{") then fromjson.status else . end')
 
-    echo "Current status: $status"
-
     if [[ "$status" == "DONE" || "$status" == "FAILED" || "$status" == "UNKNOWN" || "$status" == "CANCELED" ]]; then
+        echo "Current status: $status"
         if [[ "$status" == "DONE" ]]; then
             echo "CI completed successfully"
         elif [[ "$status" == "FAILED" ]]; then
