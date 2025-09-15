@@ -18,6 +18,8 @@ while true; do
                         -d "{\"type\": \"RETRIEVE-MERGE-STATUS\", \"commitId\": \"${COMMIT_ID}\"}" "https://get-tasend-back-twkvcdsbpj.cn-hangzhou.fcapp.run")
     status=$(echo "$response" | grep -o '"status":"[^"]*"' | cut -d':' -f2 | tr -d '"')
 
+    echo "Response: $response"
+
     echo "Current status: $status"
 
     if [ "$status" != "PENDING" ]; then
