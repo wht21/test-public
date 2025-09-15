@@ -34,18 +34,18 @@ echo "${SECURITY}"
 
 JSON_BODY=$(cat <<EOF
 {
-  \"type\": \"MERGE-TASK\",
-  \"repositoryUrl\": \"${REPO_URL}\",
-  \"commitId\": \"${COMMIT_ID}\",
-  \"aone\": {
-    \"projectId\": \"${AONE_PROJECT_ID}\"
+  "type": "MERGE-TASK",
+  "repositoryUrl": "${REPO_URL}",
+  "commitId": "${COMMIT_ID}",
+  "aone": {
+    "projectId": "${AONE_PROJECT_ID}"
   },
-  \"authorEmail\": \"${AUTHOR_EMAIL}\",
-  \"authorName\": \"${AUTHOR_NAME}\",
-  \"mergeMessage\": \"${MERGE_MESSAGE}\",
-  \"mergeType\": \"${MERGE_TYPE}\",
-  \"sourceBranch\": \"${SRC_BRANCH}\",
-  \"targetBranch\": \"${DEST_BRANCH}\"
+  "authorEmail": "${AUTHOR_EMAIL}",
+  "authorName": "${AUTHOR_NAME}",
+  "mergeMessage": "${MERGE_MESSAGE}",
+  "mergeType": "${MERGE_TYPE}",
+  "sourceBranch": "${SOURCE_BRANCH}",
+  "targetBranch": "${TARGET_BRANCH}"
 }
 EOF
 )
