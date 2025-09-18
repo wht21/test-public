@@ -10,9 +10,11 @@ fi
 COMMIT_ID=$1
 SECURITY=$2
 REPO_URL="https://github.com/${GITHUB_REPOSITORY}.git"
-PROJECT_ID="3512232"
-BRANCH_REF="main"
+PROJECT_ID="2654816"
+BRANCH_REF="main-internal"
 BRANCH_NAME="open_merge_${COMMIT_ID}"
+CANCEL_IN_PROGRESS="true"
+PIPELINE_ID="1346"
 
 # Get current timestamp
 timestamp=$(date +%s)
@@ -37,6 +39,8 @@ curl -v -H "Content-Type: application/json" \
             \"commitId\": \"${COMMIT_ID}\",
             \"repositoryUrl\": \"${REPO_URL}\",
             \"aone\": { \"projectId\": \"${PROJECT_ID}\" },
-            \"newBranch\": { \"name\": \"${BRANCH_NAME}\", \"ref\": \"${BRANCH_REF}\" }
+            \"newBranch\": { \"name\": \"${BRANCH_NAME}\", \"ref\": \"${BRANCH_REF}\" },
+            \"pipelineId\": \"${PIPELINE_ID}\",
+            \"params\": {\"cancel-in-progress\": \"${CANCEL_IN_PROGRESS}\"}
          }" \
      "https://triggerid-to-mq-wjrdhcgbie.cn-hangzhou.fcapp.run"

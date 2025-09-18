@@ -1,9 +1,0 @@
-[submodule "test-pri-dir"]
-	path = test-pri-dir
-	url = git@github.com:wht21/test-private.git
-[submodule "test-pri-dir-1"]
-	path = test-pri-dir-1
-	url = git@github.com:wht21/test-private.git
-[submodule "iner-dev-1"]
-	path = iner-dev-1
-	url = http://gitlab.alibaba-inc.com/qiqin-dev/qiqin-dev-repo.git
