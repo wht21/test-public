@@ -35,6 +35,12 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo "Event action: ${{ github.event.action }}"
+          echo "Event name: ${{ github.event_name }}"
+          echo "Event action: ${{ github.event.action }}"
+          echo "Workflow run ID: ${{ github.run_id }}"
+          echo "Run attempt: ${{ github.run_attempt }}"
+          echo "Workflow: ${{ github.workflow }}"
+          echo "Run number: ${{ github.run_number }}"
   info:
     runs-on: ubuntu-latest
     steps:
