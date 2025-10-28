@@ -15,7 +15,7 @@ on:
     inputs:
       update-internal:
         description: "update internal source code or not"
-        required: false
+        required: true
         default: "false"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -46,6 +46,7 @@ jobs:
           echo "Run attempt: ${{ github.run_attempt }}"
           echo "Workflow: ${{ github.workflow }}"
           echo "Run number: ${{ github.run_number }}"
+          echo "Running with update-internal: ${{ github.event.inputs.update-internal }}"
   info:
     runs-on: ubuntu-latest
     steps:
