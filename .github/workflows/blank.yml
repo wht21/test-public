@@ -12,6 +12,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      update-internal:
+        description: "update internal source code or not"
+        required: true
+        default: "false"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -34,3 +39,18 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          echo "Event action: ${{ github.event.action }}"
+          echo "Event name: ${{ github.event_name }}"
+          echo "Event action: ${{ github.event.action }}"
+          echo "Workflow run ID: ${{ github.run_id }}"
+          echo "Run attempt: ${{ github.run_attempt }}"
+          echo "Workflow: ${{ github.workflow }}"
+          echo "Run number: ${{ github.run_number }}"
+          echo "Running with update-internal: ${{ github.event.inputs.update-internal }}"
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: |
+          echo Hello, world!
+          sh ./test.sh
