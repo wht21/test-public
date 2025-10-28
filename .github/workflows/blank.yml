@@ -34,7 +34,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          echo "run event ${{ github.event.workflow_run.event }}"
+          echo "${{ github.event.workflow_run.re_run_reason }}"
   info:
     runs-on: ubuntu-latest
     steps:
