@@ -34,11 +34,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          if [ "${{ github.event.workflow_run.event }}" == "re_run" ]; then
-            echo "This is a regular re-run."
-          else
-            echo "This is not a regular re-run."
-          fi
+          echo "Event action: ${{ github.event.action }}"
   info:
     runs-on: ubuntu-latest
     steps:
