@@ -58,10 +58,10 @@ jobs:
           echo "Run attempt: ${{ github.run_attempt }}"
           echo "Workflow: ${{ github.workflow }}"
           echo "Run number: ${{ github.run_number }}"
-          if [ "${{ needs.prepare.result }}" = "skipped" ]; then
+          if [ "${{ needs.info.result }}" = "skipped" ]; then
             echo "⚠️ prepare job was skipped, not executed."
             exit 1
-          elif [ "${{ needs.prepare.result }}" = "success" ]; then
+          elif [ "${{ needs.info.result }}" = "success" ]; then
             echo "✅ prepare job executed successfully."
           else
             echo "❌ prepare job failed."
