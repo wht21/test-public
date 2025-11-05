@@ -57,7 +57,7 @@ jobs:
           echo "Workflow: ${{ github.workflow }}"
           echo "Run number: ${{ github.run_number }}"
           echo "Running with update-internal: ${{ github.event.inputs.update-internal }}"
-          echo "Running with is-rerun: ${{ needs.set-rerun.outputs.is_rerun_failed }}"
+          echo "Running with is-rerun: ${{ needs.info.outputs.is_rerun_failed }}"
       - name: Run a one-line script
         run: |
           echo Hello, world!
