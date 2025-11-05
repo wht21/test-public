@@ -21,6 +21,16 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
+  info:
+    runs-on: ubuntu-latest
+    outputs:
+      is_rerun_failed: ${{ steps.set-rerun.outputs.is_rerun_failed }}
+    steps:
+      - id: set-rerun
+        name: get is rerun
+        run: |
+          echo run this job means run all jobs!
+          echo "is_rerun_failed=true" >> $GITHUB_OUTPUT
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -47,10 +57,9 @@ jobs:
           echo "Workflow: ${{ github.workflow }}"
           echo "Run number: ${{ github.run_number }}"
           echo "Running with update-internal: ${{ github.event.inputs.update-internal }}"
-  info:
-    runs-on: ubuntu-latest
-    steps:
+          echo "Running with is-rerun: ${{ needs.set-rerun.outputs.is_rerun_failed }}"
       - name: Run a one-line script
         run: |
           echo Hello, world!
           sh ./test.sh
+  
