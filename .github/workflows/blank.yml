@@ -58,7 +58,10 @@ jobs:
           echo "Run attempt: ${{ github.run_attempt }}"
           echo "Workflow: ${{ github.workflow }}"
           echo "Run number: ${{ github.run_number }}"
-          echo "Running with is-rerun: $is_rerun_failed"
+          if [ "${{ needs.info.result }}" = "skipped" ]; then
+            echo "Running with is-rerun: $is_rerun_failed"
+          if
+
       - name: Run a one-line script
         run: |
           echo Hello, world!
