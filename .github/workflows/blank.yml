@@ -30,7 +30,7 @@ jobs:
         name: get is rerun
         run: |
           echo run this job means run all jobs!
-          echo "is_rerun_failed=true" >> $GITHUB_OUTPUT
+          echo "is_rerun_failed=true" >> "$GITHUB_OUTPUT"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -46,6 +46,8 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
+        env:
+          is_rerun_failed: ${{ needs.info.outputs.is_rerun_failed }}
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
@@ -56,8 +58,7 @@ jobs:
           echo "Run attempt: ${{ github.run_attempt }}"
           echo "Workflow: ${{ github.workflow }}"
           echo "Run number: ${{ github.run_number }}"
-          echo "Running with update-internal: ${{ github.event.inputs.update-internal }}"
-          echo "Running with is-rerun: ${{ needs.info.outputs.is_rerun_failed }}"
+          echo "Running with is-rerun: $is_rerun_failed"
       - name: Run a one-line script
         run: |
           echo Hello, world!
